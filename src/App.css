@@ -1,0 +1,37 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+p {
+  text-align: left;
+}
+
+code {
+  color: #fff;
+  background-color: #333;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+#radios {
+  float: left;
+  padding: 0 20px 20px 20px;
+}
+
+.starter-instructions {
+  color: #ccc;
+  text-align: left;
+  width: 800px;
+}
+
+#map {
+  height: 60%;
+  width: 100%;
+}
