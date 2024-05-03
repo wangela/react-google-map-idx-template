@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react'
+import React, { SetStateAction, useState } from 'react'
 import './App.css'
 import {
   APIProvider,
@@ -78,11 +78,14 @@ function App() {
 
       {/* Be sure to wrap the Map component in a container that has a width and height >0px in order for the map to be visible. */}
       <div id="map">
-        <APIProvider apiKey={MAPS_API_KEY}>
+        <APIProvider
+        apiKey={MAPS_API_KEY}
+        solutionChannel="GMP_IDX_template-react-ts">
           <Map
             // Get a Map ID to use cloud-based maps styling, advanced markers, and vector maps
             // Documentaiton at https://goo.gle/get-map-id
             mapId={'DEMO_MAP_ID'}
+            disableDefaultUI={true}
             {...cameraState}>
             <Marker position={SANTIAGO_LOCATION} />
             <Marker position={LAGOS_LOCATION} />
