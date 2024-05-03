@@ -1,9 +1,4 @@
 /// <reference types="vite/client" />
-interface ImportMetaEnv {
-    readonly VITE_MAPS_API_KEY: string
-    // more env variables...
-  }
-  
-  interface ImportMeta {
+interface ImportMeta {
     readonly env: ImportMetaEnv
-  }
+}
