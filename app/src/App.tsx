@@ -66,8 +66,10 @@ function App() {
             <code>VITE_MAPS_API_KEY=YOUR_API_KEY</code>
           </li>
           <li>
-            Replace <code>YOUR_API_KEY</code> with an API key you obtain from
-            the Google Maps Platform integration in IDX.
+            Press <code>Ctrl+Shift+P</code> (Windows) or <code>Cmd+Shift+P</code> (Mac) to open the command palette. Type "IDX focus" and choose "IDX: Focus on Project IDX View" to open the IDX integrations panel. Enable the Google Maps Platform integration, enable the APIs, and click "Get an API Key".
+          </li>
+          <li>
+            Replace <code>YOUR_API_KEY</code> with an API key you obtained in the previous step.
           </li>
         </ol>
         <h2>Documentation</h2>
