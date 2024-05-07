@@ -7,7 +7,15 @@ import {
   Marker,
 } from '@vis.gl/react-google-maps';
 
-// Defined in .env.local
+// TODO: Get a Google Maps Platform API key:
+/*
+ * 1. Open the Project IDX view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Project IDX View"
+ * 2. Click on the "Google Maps Platform" integration.
+ * 3. Click "Enable APIs" to enable the Google Maps Platform APIs.
+ * 4. Click "Get API Key" to get an API key.
+ * 5. Create a file named .env.local in the root directory. The .local suffix keeps secrets out of source control.
+ * 6. In the file, add the line: VITE_MAPS_API_KEY=YOUR_API_KEY.
+ * 7. Replace YOUR_API_KEY with the API key you got in step 4. */
 const MAPS_API_KEY = import.meta.env.VITE_MAPS_API_KEY as string;
 
 const SANTIAGO_LOCATION = { lat: -33.45722938110794, lng: -70.66642630502507 };
@@ -111,7 +119,7 @@ function App() {
         >
           <Map
             // Get a Map ID to use cloud-based maps styling, advanced markers, and vector maps
-            // Documentaiton at https://goo.gle/get-map-id
+            // Documentation at https://goo.gle/get-map-id
             mapId={'DEMO_MAP_ID'}
             disableDefaultUI={true}
             {...cameraState}
