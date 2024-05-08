@@ -1,7 +1,10 @@
 {
     "name": "React + Google Maps Platform",
-    "description": "Add a Google map to a React app.",
-    "categories": ["Web"],
+    "description": "Add a Google map to a React app with TypeScript.",
+    "categories": [
+      "Web",
+      "Misc"
+    ]
     "icon": "https://developers.google.com/static/maps/images/maps-icon.svg",
     "publisher": "Google Maps Platform",
     "params": []
