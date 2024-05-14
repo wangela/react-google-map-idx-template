@@ -117,7 +117,7 @@ function App() {
       <div id="map">
         <APIProvider
           apiKey={MAPS_API_KEY}
-          solutionChannel="GMP_IDX_template-react-ts"
+          solutionChannel="GMP_IDX_templates_v0_reactts"
         >
           <Map
             // Get a Map ID to use cloud-based maps styling, advanced markers, and vector maps
