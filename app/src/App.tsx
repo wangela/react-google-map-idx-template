@@ -1,11 +1,13 @@
-import React, { SetStateAction, useState } from 'react';
-import './App.css';
-import {
-  APIProvider,
-  Map,
+import { useCallback, useState } from "react";
+import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+
+import "./App.css";
+
+import type { ChangeEvent } from "react";
+import type {
+  MapCameraChangedEvent,
   MapCameraProps,
-  Marker,
-} from '@vis.gl/react-google-maps';
+} from "@vis.gl/react-google-maps";
 
 // TODO: Get a Google Maps Platform API key:
 /*
@@ -37,16 +39,22 @@ const LAGOS_CAMERA_STATE = {
 
 function App() {
   const [cameraState, setCameraState] = useState<MapCameraProps>(
-    SANTIAGO_CAMERA_STATE
+    SANTIAGO_CAMERA_STATE,
   );
-  const [city, setCity] = useState('santiago');
+  const [city, setCity] = useState("santiago");
 
-  const onCityChange = (e: { target: { value: SetStateAction<string> } }) => {
+  const onCameraChanged = useCallback((ev: MapCameraChangedEvent) => {
+    setCameraState(ev.detail);
+  }, []);
+
+  const onCityChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
     setCameraState(
-      e.target.value === 'santiago' ? SANTIAGO_CAMERA_STATE : LAGOS_CAMERA_STATE
+      e.target.value === "santiago"
+        ? SANTIAGO_CAMERA_STATE
+        : LAGOS_CAMERA_STATE,
     );
-  };
+  }, []);
 
   return (
     <>
@@ -66,22 +74,27 @@ function App() {
             <code>VITE_MAPS_API_KEY=YOUR_API_KEY</code>
           </li>
           <li>
-            Press <code>Ctrl+Shift+P</code> (Windows) or <code>Cmd+Shift+P</code> (Mac) to open the command palette. Type "IDX focus" and choose "IDX: Focus on Project IDX View" to open the IDX integrations panel. Enable the Google Maps Platform integration, enable the APIs, and click "Get an API Key".
+            Press <code>Ctrl+Shift+P</code> (Windows) or{" "}
+            <code>Cmd+Shift+P</code> (Mac) to open the command palette. Type
+            "IDX focus" and choose "IDX: Focus on Project IDX View" to open the
+            IDX integrations panel. Enable the Google Maps Platform integration,
+            enable the APIs, and click "Get an API Key".
           </li>
           <li>
-            Replace <code>YOUR_API_KEY</code> with an API key you obtained in the previous step.
+            Replace <code>YOUR_API_KEY</code> with an API key you obtained in
+            the previous step.
           </li>
         </ol>
         <h2>Documentation</h2>
         <p>
-          Visit{' '}
+          Visit{" "}
           <a href="https://developers.google.com/maps" target="_blank">
             developers.google.com/maps
-          </a>{' '}
-          for more about Google Maps Platform and{' '}
+          </a>{" "}
+          for more about Google Maps Platform and{" "}
           <a href="https://goo.gle/react-google-maps" target="_blank">
             goo.gle/react-google-maps
-          </a>{' '}
+          </a>{" "}
           for documentation and examples related to the
           @vis.gl/react-google-maps library.
         </p>
@@ -92,24 +105,28 @@ function App() {
           <strong>Choose a city to update the state of the map center</strong>
         </p>
         <div id="radios">
-          <input
-            type="radio"
-            id="santiago"
-            name="city"
-            value="santiago"
-            checked={city === 'santiago'}
-            onChange={onCityChange}
-          />{' '}
-          Santiago
-          <input
-            type="radio"
-            id="lagos"
-            name="city"
-            value="lagos"
-            checked={city === 'lagos'}
-            onChange={onCityChange}
-          />{' '}
-          Lagos
+          <label>
+            <input
+              type="radio"
+              id="santiago"
+              name="city"
+              value="santiago"
+              checked={city === "santiago"}
+              onChange={onCityChange}
+            />{" "}
+            Santiago
+          </label>
+          <label>
+            <input
+              type="radio"
+              id="lagos"
+              name="city"
+              value="lagos"
+              checked={city === "lagos"}
+              onChange={onCityChange}
+            />{" "}
+            Lagos
+          </label>
         </div>
       </div>
 
@@ -122,9 +139,10 @@ function App() {
           <Map
             // Get a Map ID to use cloud-based maps styling, advanced markers, and vector maps
             // Documentation at https://goo.gle/get-map-id
-            mapId={'DEMO_MAP_ID'}
+            mapId={"DEMO_MAP_ID"}
             disableDefaultUI={true}
             {...cameraState}
+            onCameraChanged={onCameraChanged}
           >
             <Marker position={SANTIAGO_LOCATION} />
             <Marker position={LAGOS_LOCATION} />

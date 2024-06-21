@@ -12,8 +12,10 @@ p {
 }
 
 code {
-  color: #fff;
-  background-color: #333;
+  display: inline-block;
+  padding: 0 .3em ;
+  color: light-dark(#000, #fff);
+  background-color: light-dark(#eee, #3a3a3a);
 }
 
 input {
@@ -26,9 +28,9 @@ input {
 }
 
 .starter-instructions {
-  color: #ccc;
+  color: light-dark(#333, #ccc);
   text-align: left;
-  width: 800px;
+  max-width: 800px;
 }
 
 #map {
